@@ -1,0 +1,75 @@
+@import "../../sass/variables";
+@import "../../sass/mixins";
+
+.clock-block {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+.analog-clock {
+  width: $clock-size;
+  height: $clock-size;
+  border-radius: 50%;
+  background-image: url("../../assets/clock-face.png");
+  background-position: center;
+  background-size: cover;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+
+  &:before {
+    content: "";
+    border-radius: 50%;
+    width: 8px;
+    height: 8px;
+    background-color: black;
+    z-index: 4;
+  }
+
+  &__hour,
+  &__min,
+  &__sec {
+    position: absolute;
+    top: 0%;
+    left: 0%;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+  }
+
+  &__hour:after {
+    content: "";
+    margin-top: 32%;
+    width: 6px;
+    height: 17.5%;
+    z-index: 1;
+    @include arrow;
+  }
+
+  &__min:after {
+    content: "";
+    margin-top: 15%;
+    width: 3px;
+    height: 35%;
+    z-index: 2;
+    @include arrow;
+  }
+
+  &__sec:after {
+    content: "";
+    margin-top: 10%;
+    width: 1px;
+    height: 45%;
+    z-index: 3;
+    @include arrow;
+  }
+}
+
+.digital-clock {
+  margin: 15px auto 15px;
+}
