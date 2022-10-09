@@ -1,7 +1,30 @@
-import React from "react";
+import React, { useEffect, useRef, useState } from "react";
+import { useSelector } from "react-redux";
+import getTime from "../../utils/getTime";
 import "./Clock.scss";
 
-export default function Clock({ time }) {
+export default function Clock() {
+  const [time, setTime] = useState(new Date());
+  const timeZonesList = useSelector((state) => state.timeZones.timeZones);
+  const [selectValue, setSelectValue] = useState("");
+  const timer = useRef(null);
+
+  useEffect(() => {
+    timer.current = setInterval(() => {
+      setTime(getTime(parseInt(selectValue)));
+    }, 1000);
+
+    return () => {
+      clearInterval(timer.current);
+    };
+  }, [selectValue]);
+
+  useEffect(() => {
+    if (timeZonesList.length > 0) {
+      setSelectValue(timeZonesList[0].timezone);
+    }
+  }, [timeZonesList]);
+
   const hour = time.getHours();
   const min = time.getMinutes();
   const sec = time.getSeconds();
@@ -27,11 +50,22 @@ export default function Clock({ time }) {
         ></div>
       </div>
       <div className="digital-clock">{`${digitalHour}:${digitalMin}:${digitalSec}`}</div>
-      <select name="select">
-        <option value="value1">Значение 1</option>
-        <option value="value2">Значение 2</option>
-        <option value="value3">Значение 3</option>
-      </select>
+
+      {timeZonesList.length > 0 ? (
+        <select
+          className="select"
+          onChange={(evt) => setSelectValue(evt.target.value)}
+          value={selectValue}
+        >
+          {timeZonesList.map((item) => (
+            <option value={item.timezone} key={item.timezone}>
+              {item.name}
+            </option>
+          ))}
+        </select>
+      ) : (
+        <p className="loader">Loading...</p>
+      )}
     </div>
   );
 }

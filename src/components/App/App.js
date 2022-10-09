@@ -1,16 +1,22 @@
-import "./App.scss";
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { fetchTimeZones } from "../../redux/timeZonesSlice";
 import Clock from "../Clock/Clock";
-import getData from "../../utils/api";
+import "./App.scss";
 
 function App() {
-  const [time, setTime] = useState(new Date());
+  const timeZones = useSelector((state) => state.timeZones.timeZones);
+  const dispatch = useDispatch();
 
-  setInterval(() => {
-    setTime(new Date());
-  }, 1000);
+  useEffect(() => {
+    dispatch(fetchTimeZones());
+  }, []);
 
-  return <Clock time={time} />;
+  return (
+    <>
+      <Clock />
+    </>
+  );
 }
 
 export default App;
