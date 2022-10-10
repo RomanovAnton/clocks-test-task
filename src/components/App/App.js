@@ -1,4 +1,4 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
 import { fetchTimeZones } from "../../redux/timeZonesSlice";
 import Clock from "../Clock/Clock";
@@ -9,6 +9,7 @@ function App() {
 
   useEffect(() => {
     dispatch(fetchTimeZones());
+    
   }, []);
 
   return (

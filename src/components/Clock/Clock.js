@@ -24,9 +24,9 @@ export default function Clock() {
     }
   }, [timeZonesList]);
 
+  const hour = time.getHours();
   const min = time.getMinutes();
   const sec = time.getSeconds();
-  const hour = time.getHours();
 
   const digitalHour = hour < 10 ? `0${hour}` : `${hour}`;
   const digitalMin = min < 10 ? `0${min}` : `${min}`;
