@@ -13,7 +13,6 @@ export default function Clock() {
     timer.current = setInterval(() => {
       setTime(getTime(parseInt(selectValue)));
     }, 1000);
-
     return () => {
       clearInterval(timer.current);
     };
@@ -25,9 +24,9 @@ export default function Clock() {
     }
   }, [timeZonesList]);
 
-  const hour = time.getHours();
   const min = time.getMinutes();
   const sec = time.getSeconds();
+  const hour = time.getHours();
 
   const digitalHour = hour < 10 ? `0${hour}` : `${hour}`;
   const digitalMin = min < 10 ? `0${min}` : `${min}`;
@@ -54,7 +53,10 @@ export default function Clock() {
       {timeZonesList.length > 0 ? (
         <select
           className="select"
-          onChange={(evt) => setSelectValue(evt.target.value)}
+          onChange={(evt) => {
+            setSelectValue(evt.target.value);
+            setTime(getTime(parseInt(evt.target.value)));
+          }}
           value={selectValue}
         >
           {timeZonesList.map((item) => (
