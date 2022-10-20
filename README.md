@@ -10,4 +10,4 @@
   <img alt="redux" src="https://img.shields.io/badge/redux-BA55D3.svg?&style=flat-square&logo=redux&logoColor=#fff" />&nbsp;
   <img alt="sass" src="https://img.shields.io/badge/sass-cf649a.svg?&style=flat-square&logo=sass&logoColor=fff" />&nbsp;
 
-- запустить проект: `npm start`
+- проект доступен по ссылке: https://romanovanton.github.io/clocks-test-task/index.html
