@@ -8,6 +8,7 @@ export default function Clock() {
   const timeZonesList = useSelector((state) => state.timeZones.timeZones);
   const [selectValue, setSelectValue] = useState("");
   const timer = useRef(null);
+  console.log(timeZonesList);
 
   useEffect(() => {
     timer.current = setInterval(() => {

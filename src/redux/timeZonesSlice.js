@@ -5,7 +5,7 @@ export const fetchTimeZones = createAsyncThunk(
   async function (_, { rejectWithValue }) {
     try {
       const response = await fetch(
-        "https://633c6ee9f11701a65f762100.mockapi.io/clocks/items"
+        "https://5c55ad71-8e62-473f-9820-4974b8638153.mock.pstmn.io/test"
       );
 
       if (!response.ok) {
