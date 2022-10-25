@@ -5,7 +5,7 @@ export const fetchTimeZones = createAsyncThunk(
   async function (_, { rejectWithValue }) {
     try {
       const response = await fetch(
-        "https://5c55ad71-8e62-473f-9820-4974b8638153.mock.pstmn.io/test"
+        "https://1299e8ea-6a09-443d-8ef0-f59af289a1c3.mock.pstmn.io/timezones"
       );
 
       if (!response.ok) {
